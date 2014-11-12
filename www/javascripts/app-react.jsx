@@ -177,13 +177,13 @@ require(['components/react/react-with-addons.js'], function(React) {
 			}
 		});		
 		
-		React.render(<Oluttutka beers={boop} />, document.getElementById('content'));			
+		React.render(<Oluttutka beers={beers} />, document.getElementById('content'));			
 			
 			
 			
 	}, function (err) {
 		steroids.logger.log("error " + err);
-		console.log("error " + err);
+		//console.log(reason);
 	});
 	
 	var Oluttutka = React.createClass({
@@ -204,6 +204,7 @@ require(['components/react/react-with-addons.js'], function(React) {
 		},
 		
 		handleChange: function(derp) {
+			console.log(derp);
 		},
 		
 		performSearch: function (searchString) {
