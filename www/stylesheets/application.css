@@ -1,0 +1,377 @@
+/* Application wide non-native CSS rules */
+
+.body {
+
+}
+
+* {
+	cursor: pointer;
+}
+
+.horiScroll {
+	white-space: nowrap;
+	overflow-x: scroll;	
+	overflow-y: hidden;
+	-webkit-overflow-scrolling: touch;
+	//background-color: #555;
+	
+	padding-left: 6px;
+	padding-right: 6px;
+	
+	background: rgb(93,93,93);
+	background: -moz-linear-gradient(top,  rgba(93,93,93,1) 0%, rgba(104,104,104,1) 21%, rgba(106,106,106,1) 50%, rgba(104,104,104,1) 80%, rgba(93,93,93,1) 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(93,93,93,1)), color-stop(21%,rgba(104,104,104,1)), color-stop(50%,rgba(106,106,106,1)), color-stop(80%,rgba(104,104,104,1)), color-stop(100%,rgba(93,93,93,1)));
+	background: -webkit-linear-gradient(top,  rgba(93,93,93,1) 0%,rgba(104,104,104,1) 21%,rgba(106,106,106,1) 50%,rgba(104,104,104,1) 80%,rgba(93,93,93,1) 100%);
+	background: -o-linear-gradient(top,  rgba(93,93,93,1) 0%,rgba(104,104,104,1) 21%,rgba(106,106,106,1) 50%,rgba(104,104,104,1) 80%,rgba(93,93,93,1) 100%);
+	background: -ms-linear-gradient(top,  rgba(93,93,93,1) 0%,rgba(104,104,104,1) 21%,rgba(106,106,106,1) 50%,rgba(104,104,104,1) 80%,rgba(93,93,93,1) 100%);
+	background: linear-gradient(to bottom,  rgba(93,93,93,1) 0%,rgba(104,104,104,1) 21%,rgba(106,106,106,1) 50%,rgba(104,104,104,1) 80%,rgba(93,93,93,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5d5d5d', endColorstr='#5d5d5d',GradientType=0 );
+
+	height: 56px;
+}
+
+.list {
+	background: #fcfcfc;
+}
+
+.button {
+	transition: 0.25s;
+}
+
+.button-tiny {
+	padding: 0 !important;
+	margin: 0 !important;
+	min-height: 24px;
+}
+
+
+.customButton {
+	margin-left: 2px;
+	margin-right: 2px;
+	border-radius: 3px;
+	text-align: center;
+	padding-left: 6px;
+	padding-right: 6px;
+	border: 0;
+	margin-top: 12px;
+	border: 0.5px #333 solid;
+}
+
+.checkedButton {
+	 border-color: #d39211 !important;
+	 background-color: #f0b840 !important;
+	 color: #fff !important;
+	 transition: 0.25s;
+}
+
+.smallIcon {
+	font-size: 16px !important;
+	color: #666;
+}
+
+.item > h2 {
+	display: inline;
+}
+
+.item-divider:active {
+	color: #777 !important;
+	background-color: #ccc !important;
+	transition: 0.15s !important;
+}
+
+.item-divider {
+	transition: 0.15s !important;	
+}
+
+.item-divider .count {
+	font-weight: 300;
+	color: #777;
+	font-size: 15px;
+	float: left;
+	padding-left: 6px;
+	padding-right: 6px;
+}
+
+.item-divider .reset {
+	float: right;
+	font-weight: 300;
+	color: #777;
+	font-size: 14px;
+	transition: 0.15s;	
+	padding-left: 6px;
+	padding-right: 6px;
+}
+
+.item-divider .reset:active {
+	color: #ccc;
+	transition: 0.15s;
+}
+
+.subheader {
+	//float: left;
+	font-size: 12px;
+	text-transform: uppercase;
+	min-height: 20px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	color: #777;
+}
+
+#beerlist {
+	min-height: 101%;
+	position: relative;
+	z-index: 0;
+}
+
+#list {
+	margin-bottom: 96px;
+	margin-top: 48px;	
+}
+
+.hidden {
+	visibility: hidden !important;
+	opacity: 0 !important;
+	transition: 0.25s !important;
+}
+
+.display-none {
+	display: none;
+}
+
+.reset {
+	/*visibility: visible;
+	opacity: 1;*/
+	opacity: 1;
+	transition: 0.25s;
+}
+
+.custom-item-divider > .item-icon-left {
+	padding-left: 24px;
+	padding-right: 0;
+}
+
+.custom-item-divider > .item-icon-left > .icon {
+	left: 0;
+}
+
+/*.fixed-search {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 1;
+}*/
+
+.searchBoxEmpty {
+	//min-height: 36px;
+	width: 100%;
+	display: inline-block;
+	transition: 0.25s;
+}
+
+.searchBoxNotEmpty {
+	//min-height: 36px;
+	width: 85%;
+	display: inline-block;
+	transition: 0.25s;
+}
+
+.resetBox {
+	display: inline-block;
+	width: 15%;
+	transition: 0.25s;
+	opacity: 1;	
+	text-align: center;
+	color: #777;
+}
+
+.resetBoxHidden {
+	display: inline-block;
+	width: 0%;
+	transition: 0.25s;
+	opacity: 0;
+}
+
+.searchFieldInlineLabel:active {
+	//background-color: #aaa;
+	color: #eee;
+	transition: 0.15s;
+}
+
+.searchFieldInlineLabel {
+	position: absolute;
+	z-index: 2;
+	color: #999;
+	right: 12px;
+	min-width: 60px;
+	margin-right: 6px;
+	height: 22px;
+	top: 8px;
+	margin-top: 12px;
+	border-radius: 4px;
+	transition: 0.15s;	
+	right: 18%;
+	text-align: right;
+}
+
+.searchFieldBeers {
+	padding-right: 4px;
+	position: relative;
+	top: -4px;
+}
+
+.resetSearch {
+	border-radius: 50%;
+	background: #999;
+	color: #ddd;
+	display: inline-block;
+	min-width: 14px;
+	min-height: 14px;
+	height: 14px;
+	width: 14px;
+	max-height: 14px;
+	max-width: 14px;
+	font-size: 11px;
+	text-align: center;
+	position: relative;
+	top: -4px;
+
+}
+
+.resetSearch > span {
+	position: relative;
+	top: -1px;
+	left: 0px;
+	
+}
+
+
+
+.brewery {
+	//padding-top: 2px;
+	font-size: 15px;
+}
+
+#filter {
+	position: fixed;
+	left: 0;
+	top: 0;
+	right: 0;
+	//-webkit-transform: translateY(-64px);
+	//background: #ccc;
+	z-index: 2;
+	display: none;
+}
+
+.beerlist-item > *
+{
+	//pointer-events: none;
+}
+
+.beerlist-item:active {
+	background: #ccc !important;
+}
+
+.button-bar > .button-light {
+	border-color: #145fd7;
+	color: #4a87ee;
+}
+
+.button-bar > .button-positive {
+	color: #fff;
+}
+
+.big-icon {
+	font-size: 48px;
+	text-align: center;
+}
+
+.center {
+	text-align: center;
+}
+
+.ipa {
+	/*background: -moz-linear-gradient(left,  rgba(254,191,4,0.75) 0%, rgba(255,255,255,0.76) 5%, rgba(255,255,255,1) 100%);
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(254,191,4,0.75)), color-stop(5%,rgba(255,255,255,0.76)), color-stop(100%,rgba(255,255,255,1)));
+	background: -webkit-linear-gradient(left,  rgba(254,191,4,0.75) 0%,rgba(255,255,255,0.76) 5%,rgba(255,255,255,1) 100%);
+	background: -o-linear-gradient(left,  rgba(254,191,4,0.75) 0%,rgba(255,255,255,0.76) 5%,rgba(255,255,255,1) 100%);
+	background: -ms-linear-gradient(left,  rgba(254,191,4,0.75) 0%,rgba(255,255,255,0.76) 5%,rgba(255,255,255,1) 100%);
+	background: linear-gradient(to right,  rgba(254,191,4,0.75) 0%,rgba(255,255,255,0.76) 5%,rgba(255,255,255,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bffebf04', endColorstr='#ffffff',GradientType=1 ); */
+
+}
+
+.stout {
+	/*
+	background: -moz-linear-gradient(left,  rgba(0,0,0,0.75) 0%, rgba(255,255,255,0.76) 5%, rgba(255,255,255,1) 100%);
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,0.75)), color-stop(5%,rgba(255,255,255,0.76)), color-stop(100%,rgba(255,255,255,1)));
+	background: -webkit-linear-gradient(left,  rgba(0,0,0,0.75) 0%,rgba(255,255,255,0.76) 5%,rgba(255,255,255,1) 100%);
+	background: -o-linear-gradient(left,  rgba(0,0,0,0.75) 0%,rgba(255,255,255,0.76) 5%,rgba(255,255,255,1) 100%);
+	background: -ms-linear-gradient(left,  rgba(0,0,0,0.75) 0%,rgba(255,255,255,0.76) 5%,rgba(255,255,255,1) 100%);
+	background: linear-gradient(to right,  rgba(0,0,0,0.75) 0%,rgba(255,255,255,0.76) 5%,rgba(255,255,255,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bf000000', endColorstr='#ffffff',GradientType=1 );
+	*/
+	
+}
+
+#beerSearchInput {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	background-color: #dfdfdf;	
+	border-top: 1px solid #d0d0d0;
+}
+
+#beerSearchInput > label {
+	background: #fefefe;
+}
+
+.filterItem {
+	background-color: #dfdfdf;
+}
+
+.margin-24 {
+	height: 24px;
+	background: #eee;
+}
+
+#abvEntry {
+	max-width: 56px;
+	background: #ddd;
+	text-align: center;
+	padding-left: 4px;
+	padding-right: 4px;
+}
+
+.inline-block {
+	/*display: inline-block;
+	vertical-align:top	*/
+}
+
+.inline {
+	display: inline;
+}
+
+.left {
+	position: relative;
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.abvItem {
+	max-height: 46px;
+}
+
+.abvNysv {
+	padding-left: 6px;
+}
+
+.list {
+	-webkit-backface-visibility: hidden !important;
+	//-webkit-transform: translate3d(0,0,0) !important;
+	//-webkit-font-smoothing: subpixel-antialiased !important;
+}

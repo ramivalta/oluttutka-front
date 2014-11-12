@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf8">
+	<meta name="viewport" content="width=device-width">
+	<title>My Steroids App</title>
+
+	<link rel="stylesheet" href="/components/ionic/css/ionic.min.css" />
+	<link rel="stylesheet" href="/stylesheets/application.css" />
+
+	<script src="/javascripts/onerror.js"></script>
+	<script src="/javascripts/console.log.js"></script>
+
+	<!-- cordova.js is served from localhost to ensure the correct version -->
+	<script src="http://localhost/cordova.js"></script>
+	<script src="/components/steroids-js/steroids.js"></script>
+	
+		
+	<script src="/javascripts/jquery-2.1.1.min.js"></script>
+	<script src="/javascripts/knockout-3.2.0.js"></script>
+	<script src="/javascripts/knockout.mapping.js"></script>
+	<script src="/javascripts/moment-with-locales.js"></script>
+	<script src="/javascripts/lodash.min.e.js"></script>
+	<script src="/components/cycle.js"></script>
+	
+	<script src="/javascripts/jquery.transit.custom.js"></script>
+	
+	<script src="/components/ddp.js/src/ddp.js"></script>
+	<script src="/components/q/q.js"></script>
+	<script src="/components/asteroid/dist/asteroid.browser.js"></script>
+	
+	<script src="/javascripts/application.js"></script>
+	
+</head>
+<body class="content">
+	<div class="">
+		<div class="list" style="margin-bottom: 0">
+			<div class="item item-divider">
+				Ravintolat
+				
+				<span style="font-weight: 300; color: #777; padding: 0; margin: 0; font-size: 12px" data-bind="if: $root.selectedPubs().length > 0" class="fade-in">
+					<span data-bind="text: $root.selectedPubs().length"></span>
+				</span>				
+			</div>
+			
+			<div class="horiScroll">
+				<div data-bind="foreach: pubs">
+					<button class="button button-steady button-small customButton" data-bind="click: $root.addOrRemoveValue.bind($data, pub, $root.selectedPubs), css: { checkedButton : $root.isChecked(pub, $root.selectedPubs )} ">
+						<span data-bind="text: $data.pub" style="text-align: center"></span>
+					</button>
+				</div>
+			</div>
+		
+			<div style="height: 24px"></div>		
+
+			<div class="item item-icon-left item-divider" style="padding-top: 12px; padding-bottom: 12px">
+				<span data-bind="click: $root.toggleCategoryVisibility.bind($data, $root.selectedCountries, 'countries')">
+					<i class="icon ion-ios7-arrow-down smallIcon" data-bind="visible: $root.showCountryFilter() === true"></i>
+					<i class="icon ion-ios7-arrow-right smallIcon" data-bind="visible: $root.showCountryFilter() === false"></i>								
+				
+					Maat
+				</span>
+				<span style="font-weight: 300; color: #777; padding: 0; margin: 0; font-size: 12px" data-bind="if: $root.selectedCountries().length > 0" class="fade-in">
+					<span data-bind="text: $root.selectedCountries().length"></span>
+				</span>
+				
+				<span style="font-weight: 300; color: #777; padding: 0; margin: 0; font-size: 12px; float: right; padding-top: 2px" data-bind="click: function() { $root.selectedCountries.removeAll() }, if: $root.selectedCountries().length > 0" class="fade-in">
+					Nollaa
+				</span>				
+			</div>
+			
+			<div data-bind="if: $root.showCountryFilter() === true">
+				<div data-bind="foreach: countries"  class="horiScroll">
+					<button class="button button-steady button-small customButton" data-bind="click: $root.addOrRemoveValue.bind($data, country, $root.selectedCountries), css: { checkedButton : $root.isChecked(country, $root.selectedCountries )} ">
+						<span data-bind="text: $data.country" style="text-align: center"></span>
+					</button>
+				</div>
+			</div>
+
+			<div class="item item-icon-left item-divider" style="padding-top: 12px; padding-bottom: 12px">
+				<span data-bind="click: $root.toggleCategoryVisibility.bind($data, $root.selectedBreweries, 'breweries')">
+					<i class="icon ion-ios7-arrow-down smallIcon" data-bind="visible: $root.showBreweryFilter() === true"></i>
+					<i class="icon ion-ios7-arrow-right smallIcon" data-bind="visible: $root.showBreweryFilter() === false"></i>					
+				
+					Panimot
+				</span>
+				<span style="font-weight: 300; color: #777; padding: 0; margin: 0; font-size: 12px" data-bind="if: $root.selectedBreweries().length > 0" class="fade-in">
+					<span data-bind="text: $root.selectedBreweries().length"></span>
+				</span>
+				<span style="font-weight: 300; color: #777; padding: 0; margin: 0; font-size: 12px; float: right; padding-top: 2px" data-bind="click: function() { $root.selectedBreweries.removeAll() }, if: $root.selectedBreweries().length > 0" class="fade-in">
+					Nollaa
+				</span>						
+			</div>
+			
+			<div data-bind="if: $root.showBreweryFilter() === true">
+				<div data-bind="foreach: breweries"  class="horiScroll">
+					<button class="button button-steady button-small customButton" data-bind="click: $root.addOrRemoveValue.bind($data, brewery, $root.selectedBreweries), css: { checkedButton : $root.isChecked(brewery, $root.selectedBreweries )} ">
+						<span data-bind="text: $data.brewery" style="text-align: center"></span>
+					</button>
+				</div>
+			</div>
+
+			<div class="item item-icon-left item-divider" style="padding-top: 12px; padding-bottom: 12px">
+				<span data-bind="click: $root.toggleCategoryVisibility.bind($data, $root.selectedStyles, 'styles')">
+					<i class="icon ion-ios7-arrow-down smallIcon" data-bind="visible: $root.showStyleFilter() === true"></i>
+					<i class="icon ion-ios7-arrow-right smallIcon" data-bind="visible: $root.showStyleFilter() === false"></i>					
+					Tyylilajit
+				</span>
+				<span style="font-weight: 300; color: #777; padding: 0; margin: 0; font-size: 12px" data-bind="if: $root.selectedStyles().length > 0" class="fade-in">
+					<span data-bind="text: $root.selectedStyles().length"></span>
+				</span>
+				<span style="font-weight: 300; color: #777; padding: 0; margin: 0; font-size: 12px; float: right; padding-top: 2px" data-bind="click: function() { $root.selectedStyles.removeAll() }, if: $root.selectedStyles().length > 0" class="fade-in">
+					Nollaa
+				</span>
+			</div>
+	
+			<div data-bind="if: $root.showStyleFilter() === true">
+				<div data-bind="foreach: styles" class="horiScroll">
+					<button class="button button-steady button-small customButton" data-bind="click: $root.addOrRemoveValue.bind($data, type, $root.selectedStyles), css: { checkedButton : $root.isChecked(type, $root.selectedStyles) }">
+						<span data-bind="text: $data.type" style="text-align: center"></span>
+						<input type="checkbox" data-bind="attr: { value: $data.type }, checked: $root.selectedStyles" style="width: 0; height: 0; opacity: 0">
+					</button>
+				</div>
+			</div>
+
+		
+
+
+			<div class="item item-icon-left item-divider" data-bind="click: $root.toggleCategoryVisibility.bind($data, null, 'abv')" style="padding-top: 12px; padding-bottom: 12px">
+				<i class="icon ion-ios7-arrow-down smallIcon" data-bind="visible: $root.showAbvSlider() === true"></i>
+				<i class="icon ion-ios7-arrow-right smallIcon" data-bind="visible: $root.showAbvSlider() === false"></i>					
+				
+				<span data-bind="if: $root.showAbvSlider() === true">
+					Vahvuus vähintään
+					<span data-bind="text: $root.abvLimit"></span>%				
+				</span>
+				<span data-bind="if: $root.showAbvSlider() === false">Vahvuus</span>
+
+			</div>
+			
+			<div data-bind="if: $root.showAbvSlider() === true">
+				<div class="item range range-positive horiScroll">
+					<i class="icon ion-ios7-wineglass-outline light"></i>
+					<input type="range" name="abv" min="0.0" max="20.0" step="0.1" data-bind="value: $root.abvLimit, valueUpdate: 'input'">
+					<i class="icon ion-beer light"></i>
+				</div>
+			</div>
+		</div>
+		
+		<div style="height: 24px"></div>
+
+
+			<div class="item item-divider">
+				Tekstihaku
+			</div>
+			<div class="item item-input-inset">
+				<label class="item-input-wrapper">
+					<input type="text" placeholder="Oluen nimi..." data-bind="value: $root.beerSearch, valueUpdate: 'input'">
+				
+					<button id="reset" class="button button-clear button-small reset" data-bind="click: $root.beerSearch.bind($data, ''), css: { resetActive : $root.beerSearch() != '' } ">
+						<div style="border-radius: 50%; background: #777; color: #ccc; width: 16px; height: 16px">
+							<div style="position: relative; top: -6px; font-size: 12px; ">x</div>
+						</div>
+					</button>				
+				</label>
+			</div>
+		</div>
+		
+	<!--	<div style="height: 24px"></div> -->
+
+		
+		<div class="list" data-bind="foreach: filteredBeers" style="min-height: 220px">
+			<div class="item item-icon-right">
+
+					<h2 data-bind="text: name" style="display: inline"></h2>
+					<span data-bind="text: brewery" style="color: #777; font-size: 12px"></span>
+
+				<span class="item-note">
+					<span data-bind="text: type"></span>
+					<span data-bind="text: abv"></span>%
+					<span data-bind="text: country"></span>
+				</span>
+				<i class="icon ion-ios7-arrow-right" style="color: #777"></i>
+				<p><span data-bind="text: pub"></span>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
