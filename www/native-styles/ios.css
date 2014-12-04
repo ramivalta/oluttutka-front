@@ -25,15 +25,49 @@ tab-bar tab-bar-item:selected {
 
 navigation-bar {
   //background-color: #1596f7;
-	background-color: #fefefe;  
+	//background-color: #fefefe;  
+	background: rgba(125, 125, 125, 0.5);
+	color: #A36B32;
+	//font-size: 12px;
+	
+}
+
+.custom-navbar {
+	
 }
 
 navigation-bar title {
-  color: #333;
-  font-size: 20px;
+  //color: #bbb;
+	//color: #B25900;
+
+	color: #BC8E60;	
+	font-size: 18;
 }
 
 navigation-bar back-bar-button {
-  color: #ffffff;
-  font-size: 16px;
+  //color: #ffffff;
+ // font-size: 14px !important;
+//	color: #A36B32;
 }
+
+navigation-bar button {
+	//font-size: 12px;
+	//-webkit-transform: scale(0.9);
+}
+
+navigation-bar back-button {
+	//font-size: 6px;
+}
+
+/*.custom-back-button {
+	//font-size: 10px;
+	//margin-right: 30px;
+	font-size: 12;
+	content: 'Oluttutka';
+}
+
+.custom-back-button icon {
+	background-image: url("/icons/back@2x.png");
+	background-size: 20px 36px;
+	background-position: left;
+}*/

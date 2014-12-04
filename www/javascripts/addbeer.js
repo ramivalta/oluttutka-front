@@ -31,8 +31,6 @@ require(['components/react/react-with-addons.js'], function(React) {
 		});	
 		
 		
-		
-		
 		//steroids.logger.log("received message in addView  " + JSON.stringify(event));		
 		if (event.data.recipient == "addView" && event.data.sender == "frontView") {
 			steroids.logger.log("got bits, beers length was " + event.data.beers.length);

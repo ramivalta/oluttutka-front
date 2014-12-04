@@ -1,125 +1,154 @@
-/** @jsx React.DOM */
+'use strict';
 
-require(['components/react/react-with-addons.js'], function(React) {
-	
-	'use strict';
+steroids.view.setBackgroundImage("/images/barley_small2.jpg");
 
+var deviceready = false, steroidsready = false;
 
-	// Display the native navigation bar with the title "Hello World!"
-	//steroids.view.navigationBar.show("React");
-
-	// Set the WebView background color to white (effective on iOS only)
-	//steroids.view.setBackgroundColor("#eee");
-
-
-	window.addEventListener("message", function(event) {
-		//steroids.logger.log("received message  " + JSON.stringify(event));		
-		if (event.data.recipient == "beerView" && event.data.sender == "frontView") {
-			//steroids.logger.log("event " + JSON.stringify(event));
-			var beer = event.data.beer;
-			
-			React.render(<OlutInfo beer={beer} />, document.getElementById('content'));			
-		}
-	});	
-
-	
-	//var BEERS;
-	
-	//var ceres = new Asteroid("oluttutka.meteor.com");
-	
-	/*var futureValue = ceres.call("beersWithVenues");
-	futureValue.result.then(function (values) {
-		BEERS = _.sortBy(values, 'name');
-	}, function (err) {
-	});*/
-	
-
-
-
-
-	var OlutInfo = React.createClass({
-		getInitialState: function() {
-			return {
-				beer: ''
-			}
-		},
-		
-		handleResults: function(beers, search) {
-			/*this.setState({
-				foundBeers: beers,
-				searchTerms: search
-			});*/
-		},
-		
-		render: function() {
-			var self = this;
-			
-			var beer = this.props.beer;
-
-			return (
-				<div>
-					<div className='list card'>
-						<div className='item item-avatar'>
-							<img src="" width='240' height='240' alt="logo tai etiketti"></img>
-							<h2>
-								{beer.name}
-							</h2>
-						</div>
-						<div className='item'>
-							<p>
-								{beer.style}
-							</p>
-							<p>
-								{beer.brewery}
-							</p>
-							<p>
-								{beer.country}
-							</p>
-							<p>
-								{beer.venue.name}
-							</p>
-						</div>
-					</div>
-					
-					<div className='row row-center'>
-						<div className="col col-center center">
-							<i className='icon ion-ios7-pulse-strong big-icon'></i>
-						</div>
-						<div className="col col-center center">
-							<i className='icon ion-ios7-glasses-outline big-icon'></i>
-						</div>
-						<div className="col col-center center assertive">
-							<i className='icon ion-ios7-heart assertive big-icon'></i>
-						</div>
-					</div>
-				
-					<div className='list'>
-						<div className='item item-divider'>
-							Samantyylisiä oluita
-						</div>
-						<div className='item'>
-							Haha ei olee
-						</div>
-						<div className='item'>
-							Haha ei olee
-						</div>
-						
-					</div>
-				
-
-					<div className='list'>
-						<div className='item item-divider'>
-							Ilmoita saatavuudesta
-						</div>
-						<div className='item'>
-							<button className='button button-block button-assertive'>
-								Tätä olutta ei enää ole saatavilla
-							</button>
-						</div>
-					</div>
-				</div>	
-			);
-		}
-	});
+steroids.on("ready", function () {
+	steroidsready = true;
+	//onLoad();
 });
+
+document.addEventListener('deviceready', function () {
+	deviceready = true;
+	if (device.platform === 'Android') {
+		$('#background').addClass('bg-android');
+	}	
+	//onLoad();
+}, false);
+
+
+window.addEventListener("message", function(event) {
+	//$('html, body').animate({ scrollTop: 0}, 550);	
 	
+	$('html, body').scrollTop(0);
+	
+	if (event.data.recipient == "beerView" && event.data.sender == "frontView") {
+	
+		var interval = setInterval(function() {
+			if (deviceready && steroidsready) {
+				clearInterval(interval);
+				
+				var beer = event.data.beer;
+				//steroids.view.navigationBar.show(beer.name);
+				steroids.logger.log("in beerinfo view");
+
+				var OlutInfo = React.createClass({
+					getInitialState: function() {
+						return {}
+					},
+					
+					componentWillMount: function () {
+					},
+					
+					componentDidMount: function () {
+						steroids.logger.log("DID MOUNT");
+						
+						var beerinfo = $(this.refs['beerinfo'].getDOMNode());
+						var bottom = $(this.refs['beerinfo_bottom'].getDOMNode());
+						
+						var h = beerinfo.css('height');
+						
+						steroids.logger.log("setting to " + h);
+						steroids.logger.log("offset pos " + h);
+						
+						bottom.css({'marginTop' : h });
+					},
+					
+					componentDidUpdate: function () {
+						steroids.logger.log("beerinfo component updated");
+						
+						/*var beerinfo = $(this.refs['beerinfo'].getDOMNode());
+						var bottom = $(this.refs['beerinfo_bottom'].getDOMNode());
+						
+						var h = beerinfo.css('height');
+						steroids.logger.log("offset pos " + h);
+						bottom.css({'marginTop' : h + 'px' });						
+						*/
+					},
+
+					render: function() {
+						var self = this;
+						var beer = this.props.beer;
+
+						return (
+							<div className='content'>
+								<div className="item translucent title" ref={'beerinfo'}>
+									<div className="border-bottom center">
+										<h2>
+											{beer.name}
+										</h2>
+									</div>
+									<div className="row">
+										<div className="col col-50 border-right center beer-info">
+											<h3>
+												{beer.brewery}
+											</h3>
+											<h3>
+												{beer.country}
+											</h3>
+										</div>
+										<div className="col col-50 center beer-info">
+											<h3>
+												{beer.abv}%
+											</h3>
+											<h3>
+												{beer.style}
+											</h3>
+										</div>
+									</div>
+								</div>
+								
+								<div className="list" id="beerinfo-content" ref={'beerinfo_bottom'}>
+									<div className="item item-divider subheader">
+										Kuvaus
+									</div>
+
+									<div className="item beerdetails-item translucent">
+										<span>{beer.description}</span>
+									</div>
+
+									<div className="item item-divider subheader">
+										Saatavuus
+									</div>
+									{beer.venues.map(function(i) {
+										return (
+											<div className="item beer-info translucent" key={i._id}>
+												<span>{i.name}&nbsp;</span>
+											</div>
+										)
+									})}
+
+									<div className='item item-divider subheader'>
+										Samantyylisiä oluita
+									</div>
+									<div className='item beerdetails-item translucent'>
+										Suositus
+									</div>
+									<div className='item beerdetails-item translucent'>
+										Toinen suositus
+									</div>
+						
+
+									<div className='item item-divider subheader'>
+										Ilmoita saatavuudesta
+									</div>
+									<div className='item beerdetails-item translucent'>
+										<button className='button button-block button-dark'>
+											Tätä olutta ei enää ole saatavilla
+										</button>
+									</div>
+								</div>
+							</div>
+	
+						);
+					}
+				});
+
+				React.render(<OlutInfo beer={beer} />, document.getElementById('content'));		
+
+			} 
+		}, 10);
+	}
+});
+

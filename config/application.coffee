@@ -24,12 +24,12 @@ steroids.config.location = "http://localhost/index.html"
 # ]
 
 # ## Preloads
-# steroids.config.preloads = [
+#steroids.config.preloads = [
 #   {
-#     id: "google"
-#     location: "http://www.google.com"
+#     id: "beerView",
+#     location: "beer.html"
 #   }
-# ]
+#]
 
 # ## Drawers
 # steroids.config.drawers =
@@ -61,10 +61,10 @@ steroids.config.loadingScreen.tintColor = "#262626"
 
 # ## iOS Status Bar
 steroids.config.statusBar.enabled = true
-steroids.config.statusBar.style = "default"
+steroids.config.statusBar.style = "light"
 
-steroids.config.navigationBar.borderColor = "#ccc"
-steroids.config.navigationBar.borderSize = 1
+#steroids.config.navigationBar.borderColor = "#ccc"
+#steroids.config.navigationBar.borderSize = 1
 
 
 

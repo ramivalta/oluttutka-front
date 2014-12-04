@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "My awesome AppGyver Steroids project.",
   "repository": "N/A",
-  "readme":"N/A",
+  "readme": "N/A",
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,5 +15,12 @@
   "license": "none",
   "engines": {
     "steroids": "3.5.0"
+  },
+  "dependencies": {
+    "steroids": "^3.5.17",
+    "react-localstorage": "0.0.1",
+    "react-hammerjs": "^0.1.1",
+    "react": "^0.12.1",
+    "hammerjs": "^2.0.4"
   }
 }

@@ -59,11 +59,13 @@ tab-bar tab-bar-item image {
 
 navigation-bar {
   background-color: #EBEBEB;
+  border-bottom: #ebebeb;
 }
 
 navigation-bar title {
   color: #363636;
   font-size: 20px;
+  text-align: left;
 }
 
 navigation-bar back-bar-button {
